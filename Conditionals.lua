@@ -214,12 +214,12 @@ function CleveRoids.ValidateKnown(args)
         talent = CleveRoids.GetTalent(args.name)
     end
 
-    if talent == 0 or rank == 0 then
-        return false
-    end
     if not spell and not talent then return false end
     local rank = spell and string.gsub(spell.rank, "Rank ", "") or talent
 
+    if talent == 0 or rank == 0 then
+        return false
+    end
     if rank and not args.amount and not args.operator then
         return true
     elseif args.amount and CleveRoids.operators[args.operator] then
